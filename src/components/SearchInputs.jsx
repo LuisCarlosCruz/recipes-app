@@ -15,17 +15,6 @@ function SearchInputs() {
     searchBarTextFetch(inputRadio, inputText, setApiRadio);
   };
 
-  // const mudaDetails = () => {
-  //   // history.push(`${window.location.pathname}/${id}`);
-  //   // console.log(`REDIRECIONADO P/ ${window.location.pathname}/${id}`);
-  //   const id = apiRadio.meals[0].idMeal;
-
-  //   if (window.location.pathname === '/comidas') {
-  //     return (<Redirect to={ `/comidas/${id}` } />);
-  //   }
-  //   return (<Redirect to={ `/bebidas/${id}` } />);
-  // };
-
   return (
     <div>
       <label htmlFor="buscaTexto">
@@ -37,7 +26,6 @@ function SearchInputs() {
           onChange={ (e) => setInputText(e.target.value) }
         />
       </label>
-      <br />
 
       <label htmlFor="ingredient">
         <input
@@ -48,11 +36,10 @@ function SearchInputs() {
           data-testid="ingredient-search-radio"
           onChange={ (e) => setInputRadio(e.target.value) }
         />
+        <span> </span>
         Ingrediente
       </label>
-      {/* --------------------------- */}
-
-      <br />
+      <span> </span>
       <label htmlFor="name">
         <input
           type="radio"
@@ -62,10 +49,10 @@ function SearchInputs() {
           data-testid="name-search-radio"
           onChange={ (e) => setInputRadio(e.target.value) }
         />
+        <span> </span>
         Nome
       </label>
-      {/* --------------------------- */}
-      <br />
+      <span> </span>
       <label htmlFor="letra">
         <input
           type="radio"
@@ -75,9 +62,10 @@ function SearchInputs() {
           data-testid="first-letter-search-radio"
           onChange={ (e) => setInputRadio(e.target.value) }
         />
+        <span> </span>
         Primeira Letra
       </label>
-      <br />
+      <span> </span>
       <button
         type="submit"
         data-testid="exec-search-btn"

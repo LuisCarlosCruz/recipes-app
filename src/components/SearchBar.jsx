@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-// import imgProfile from '../images/profileIcon.svg';
-// import imgSearch from '../images/searchIcon.svg';
 import { Redirect } from 'react-router-dom';
 import Context from '../context/Context';
 import SearchInputs from './SearchInputs';
