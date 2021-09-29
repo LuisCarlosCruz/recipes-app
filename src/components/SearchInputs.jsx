@@ -9,10 +9,12 @@ function SearchInputs() {
     setInputRadio,
     setInputText,
     setApiRadio,
+    setFilter,
   } = useContext(Context);
 
   const handleClickFiltrarReceita = () => {
     searchBarTextFetch(inputRadio, inputText, setApiRadio);
+    setFilter(true);
   };
 
   return (
