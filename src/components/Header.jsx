@@ -13,37 +13,39 @@ export default function Header({ showSearch }) {
     setShowSearchBar } = useContext(Context);
 
   return (
-    <header className="header">
-      <Link to="/perfil">
-        <div
-          data-testid="profile-top-btn"
-          className="header-icon"
-        >
-          <img src={ profile } alt="profile" />
-        </div>
-      </Link>
+    <>
+      <header className="header">
+        <Link to="/perfil">
+          <div
+            data-testid="profile-top-btn"
+            className="header-icon"
+          >
+            <img src={ profile } alt="profile" />
+          </div>
+        </Link>
 
-      <div
-        data-testid="page-title"
-        className="header-title"
-      >
-        <h1>{ currentPage }</h1>
-      </div>
-
-      { showSearch && (
         <div
-          data-testid="search-top-btn"
-          className="header-icon"
-          role="button"
-          tabIndex="0"
-          onClick={ () => (setShowSearchBar(!showSearchBar)) }
-          onKeyPress={ () => (setShowSearchBar(!showSearchBar)) }
+          data-testid="page-title"
+          className="header-title"
         >
-          <img src={ search } alt="search" />
+          <h1>{ currentPage }</h1>
         </div>
-      ) }
-      { showSearchBar === true ? <SearchBar /> : '' }
-    </header>
+
+        { showSearch && (
+          <div
+            data-testid="search-top-btn"
+            className="header-icon"
+            role="button"
+            tabIndex="0"
+            onClick={ () => (setShowSearchBar(!showSearchBar)) }
+            onKeyPress={ () => (setShowSearchBar(!showSearchBar)) }
+          >
+            <img src={ search } alt="search" />
+          </div>
+        ) }
+      </header>
+      { showSearchBar === true && <SearchBar /> }
+    </>
   );
 }
 
