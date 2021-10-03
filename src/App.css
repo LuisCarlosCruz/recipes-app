@@ -220,14 +220,13 @@
 }
 
 /* ====================PAG DETAILS==================== */
-
 .btnIncialRecipeOn {
-  bottom: 0px;
+  bottom: 0;
   position: fixed;
 }
 
 .btnIncialRecipeOff {
-  bottom: 0px;
+  bottom: 0;
   display: none;
   position: fixed;
 }

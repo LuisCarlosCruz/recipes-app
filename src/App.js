@@ -19,8 +19,6 @@ import {
   Feitas,
   Favoritas,
   NotFound,
-  DetalheBebida,
-  DetalheComida,
   BebidaAleatoria,
 } from './pages/index';
 
