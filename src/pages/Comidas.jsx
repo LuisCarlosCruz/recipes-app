@@ -31,6 +31,8 @@ export default function Comidas() {
     async function getAllRecipes() {
       const quantidade = 12;
       const { meals } = await fetchAllRecipes('meals');
+      console.log('console abaixo em comidas linhas 18,19');
+      console.log(meals);
       setAllRecipes(meals.slice(0, quantidade));
     }
 
