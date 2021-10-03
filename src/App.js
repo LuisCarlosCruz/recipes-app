@@ -87,4 +87,4 @@ export default App;
 
 // Tela de receitas feitas: /receitas-feitas; !!
 
-// Tela de receitas favoritas: /receitas-favoritas !!
+// Tela de receitas favoritas: /receitas-favoritas  !!
