@@ -49,7 +49,7 @@ export default function Comidas() {
     } else {
       getByCategory();
     }
-  }, [selectedCategory, setAllRecipes, setCategories]);
+  }, [selectedCategory]);
 
   // NAO TENTE ENTENDER ESSE EFFECT !!
   // PRO SEU PROPRIO BEM

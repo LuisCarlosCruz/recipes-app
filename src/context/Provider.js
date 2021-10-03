@@ -12,7 +12,7 @@ function Provider({ children }) {
   const [allRecipes, setAllRecipes] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  
+
   // ESSE ESTADO TEM QUE SER SETADO NO BOTÃO 'FINALIZAR RECEITA' DA 'RECEITA EM PROGRESSO'
   const [allRecipesDone, setAllRecipesDone] = useState([
     // OBJETOS MOCKADOS PARA FINS DE TESTE

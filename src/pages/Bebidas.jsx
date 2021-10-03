@@ -47,7 +47,7 @@ function Bebidas() {
     } else {
       getByCategory();
     }
-  }, [selectedCategory, setAllRecipes, setCategories]);
+  }, [selectedCategory]);
 
   useEffect(() => {
     const quantidade = 12;
@@ -63,23 +63,6 @@ function Bebidas() {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   }, [apiRadio]);
-
-  // NAO TENTE ENTENDER ESSE EFFECT !!
-  // PRO SEU PROPRIO BEM
-  // useEffect(() => {
-  //   const quantidade = 12;
-  //   if (filter === true && apiRadio.drinks !== null) {
-  //     setAllRecipes(apiRadio.drinks.slice(0, quantidade));
-
-  //     if (window.location.pathname === '/bebidas' && apiRadio.drinks.length === 1) {
-  //       const id = apiRadio.drinks[0].idDrink;
-  //       history.push(`/bebidas/${id}`);
-  //     }
-  //   }
-  //   if (apiRadio !== undefined && apiRadio.drinks === null) {
-  //     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
-  //   }
-  // }, [apiRadio, filter, history, setAllRecipes]);
 
   return (
     <div className="page">
