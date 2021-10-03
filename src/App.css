@@ -218,3 +218,29 @@
 .profile-page {
   justify-content: center;
 }
+
+/* ====================PAG DETAILS==================== */
+.btnIncialRecipeOn {
+  bottom: 0;
+  position: fixed;
+}
+
+.btnIncialRecipeOff {
+  bottom: 0;
+  display: none;
+  position: fixed;
+}
+
+/* ================SCROLL DETAILS===================== */
+.items-wrapper {
+  width: 100vw;
+}
+
+.items {
+  display: flex;
+  overflow-x: auto;
+}
+
+.img {
+  width: 180px;
+}
