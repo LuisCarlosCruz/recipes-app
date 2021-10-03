@@ -11,33 +11,50 @@ export default function RecipeFavoriteCard() {
     setFavoritesRecipes,
   } = useContext(Context);
 
+  // {
+  //   idMeal: 52771,
+  //   strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+  //   strCategory: 'Vegetarian',
+  //   strMeal: 'Spicy Arrabiata Penne',
+  //   strTags: 'Pasta, Curry, Macarrão',
+  //   strArea: 'Italian',
+  //   type: 'Meal',
+  // },
+  // {
+  //   idDrink: 178319,
+  //   strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+  //   strCategory: 'Ordinary Drink',
+  //   strAlcoholic: 'Alcoholic',
+  //   strDrink: 'Aquamarine',
+  //   strTags: '',
+  //   type: 'Drink',
+  // },
+
   useEffect(() => {
     // CONST CRIADA PARA FINS DE TESTE. DEVE SER SETADA NO BOTÃO DE "FAVORITAR RECEITA"
     const RECEITAS_FAV_MOCK = [
       {
-        idMeal: 52771,
-        strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-        strCategory: 'Vegetarian',
-        strMeal: 'Spicy Arrabiata Penne',
-        strTags: 'Pasta, Curry, Macarrão',
-        strArea: 'Italian',
+        id: 52771,
         type: 'Meal',
+        area: 'Italian',
+        category: 'Vegetarian',
+        alcoholicOrNot: '',
+        name: 'Spicy Arrabiata Penne',
+        image: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
       },
       {
-        idDrink: 178319,
-        strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-        strCategory: 'Ordinary Drink',
-        strAlcoholic: 'Alcoholic',
-        strDrink: 'Aquamarine',
-        strTags: '',
+        id: 178319,
         type: 'Drink',
+        area: '',
+        category: 'Ordinary Drink',
+        alcoholicOrNot: 'Alcoholic',
+        name: 'Aquamarine',
+        image: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       },
     ];
     // AS 'RECEITAS FAVORITAS' SÃO SETADAS NO LOCAL STORAGE NAS PÁGS: DETALHES E PROGRESSO
     // APAGAR ESSE SET ITEM, APÓS A IMPLEMENTAÇÃO DE FAVORITAR RECEITA ESTIVER CONCLUÍDA
-    // if (localStorage.getItem('favoriteRecipes') === null) { [ISSO QUEBRA O TESTE]
     localStorage.setItem('favoriteRecipes', JSON.stringify(RECEITAS_FAV_MOCK));
-    // }
 
     // POIS O CORRETO É:
     // 1.OBTER OS DADOS DO LOCALSTORAGE
