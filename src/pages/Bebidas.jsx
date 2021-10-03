@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import CategoryFilter from '../components/CategoryFilter';
 import { useHistory } from 'react-router';
+import CategoryFilter from '../components/CategoryFilter';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HomeRecipeCard from '../components/HomeRecipeCard';
@@ -11,8 +11,12 @@ import { fetchAllRecipes, fetchByCategory, fetchCategories } from '../services';
 function Bebidas() {
   useCurrentPage('Bebidas');
 
-
-  const { setAllRecipes, setCategories, selectedCategory, apiRadio, filter } = useContext(Context);
+  const {
+    setAllRecipes,
+    setCategories,
+    selectedCategory,
+    apiRadio,
+    filter } = useContext(Context);
   const history = useHistory();
 
   useEffect(() => {
@@ -43,12 +47,11 @@ function Bebidas() {
     }
   }, [selectedCategory, setAllRecipes, setCategories]);
 
-  // NAO TENTE ENTENDER ESSE EFFECT !!
-  // PRO SEU PROPRIO BEM
   useEffect(() => {
     const quantidade = 12;
     if (filter === true && apiRadio.drinks !== null) {
       setAllRecipes(apiRadio.drinks.slice(0, quantidade));
+
       if (window.location.pathname === '/bebidas' && apiRadio.drinks.length === 1) {
         const id = apiRadio.drinks[0].idDrink;
         history.push(`/bebidas/${id}`);
@@ -58,6 +61,23 @@ function Bebidas() {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   }, [apiRadio]);
+
+  // NAO TENTE ENTENDER ESSE EFFECT !!
+  // PRO SEU PROPRIO BEM
+  // useEffect(() => {
+  //   const quantidade = 12;
+  //   if (filter === true && apiRadio.drinks !== null) {
+  //     setAllRecipes(apiRadio.drinks.slice(0, quantidade));
+
+  //     if (window.location.pathname === '/bebidas' && apiRadio.drinks.length === 1) {
+  //       const id = apiRadio.drinks[0].idDrink;
+  //       history.push(`/bebidas/${id}`);
+  //     }
+  //   }
+  //   if (apiRadio !== undefined && apiRadio.drinks === null) {
+  //     global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
+  //   }
+  // }, [apiRadio, filter, history, setAllRecipes]);
 
   return (
     <div className="page">
