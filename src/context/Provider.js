@@ -3,20 +3,6 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
-  const [statusLoginBtn, setStatusLoginBtn] = useState(true);
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
-  const [currentPage, setCurrentPage] = useState('');
-  const [login, setLogin] = useState('');
-  const [showSearchBar, setShowSearchBar] = useState(false);
-  const [allRecipes, setAllRecipes] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('All');
-
-  // ESSE ESTADO TEM QUE SER SETADO NO BOTÃO 'FINALIZAR RECEITA' DA 'RECEITA EM PROGRESSO'
-  const [allRecipesDone, setAllRecipesDone] = useState([
-    // OBJETOS MOCKADOS PARA FINS DE TESTE
-  // RECEITAS MOCKADAS PARA FINS DE TESTE EM "Receitas Feitas"
   const RECEITAS_MOCK = [
     {
       idMeal: 52771,
@@ -61,6 +47,8 @@ function Provider({ children }) {
   const [inputRadio, setInputRadio] = useState('');
   const [apiRadio, setApiRadio] = useState();
   const [filter, setFilter] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const contextValue = {
     statusLoginBtn,

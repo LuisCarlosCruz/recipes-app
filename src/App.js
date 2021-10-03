@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-// import Switch from 'react-bootstrap/esm/Switch';
 import Provider from './context/Provider';
 
 import {
