@@ -37,13 +37,13 @@ export default function RecipeFavoriteCardFilter() {
                 <Link
                   to={
                     favoriteRecipe.type === MEAL
-                      ? `${ROTA_COMIDAS}${favoriteRecipe.idMeal}`
-                      : `${ROTA_BEBIDAS}${favoriteRecipe.idDrink}`
+                      ? `${ROTA_COMIDAS}${favoriteRecipe.id}`
+                      : `${ROTA_BEBIDAS}${favoriteRecipe.id}`
                   }
                 >
                   <img
                     data-testid={ `${index}-horizontal-image` }
-                    src={ favoriteRecipe[`str${favoriteRecipe.type}Thumb`] }
+                    src={ favoriteRecipe.image }
                     alt="thumbnail"
                   />
                 </Link>
@@ -53,8 +53,8 @@ export default function RecipeFavoriteCardFilter() {
                 <div data-testid={ `${index}-horizontal-top-text` }>
                   {
                     favoriteRecipe.type === MEAL
-                      ? `${favoriteRecipe.strArea} - ${favoriteRecipe.strCategory}`
-                      : `${favoriteRecipe.strAlcoholic}`
+                      ? `${favoriteRecipe.area} - ${favoriteRecipe.category}`
+                      : `${favoriteRecipe.alcoholicOrNot}`
                   }
                 </div>
               </div>
@@ -63,12 +63,12 @@ export default function RecipeFavoriteCardFilter() {
                 <Link
                   to={
                     favoriteRecipe.type === MEAL
-                      ? `${ROTA_COMIDAS}${favoriteRecipe.idMeal}`
-                      : `${ROTA_BEBIDAS}${favoriteRecipe.idDrink}`
+                      ? `${ROTA_COMIDAS}${favoriteRecipe.id}`
+                      : `${ROTA_BEBIDAS}${favoriteRecipe.id}`
                   }
                 >
                   <h4 data-testid={ `${index}-horizontal-name` }>
-                    {favoriteRecipe[`str${favoriteRecipe.type}`]}
+                    { favoriteRecipe.name }
                   </h4>
                 </Link>
               </div>
