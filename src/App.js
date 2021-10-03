@@ -3,6 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Provider from './context/Provider';
+import Details from './components/Details';
 
 import {
   Login,
@@ -31,10 +32,10 @@ function App() {
           <Route exact path="/" component={ Login } />
           {/* ---------------------- ROTAS : COMIDA --------------------------- */}
           <Route exact path="/comidas/" component={ Comidas } />
-          <Route exact path="/comidas/:idRecipe" component={ DetalheComida } />
+          <Route exact path="/comidas/:idRecipe" component={ Details } />
           {/* ---------------------- ROTAS : BEBIDAS --------------------------- */}
           <Route exact path="/bebidas/" component={ Bebidas } />
-          <Route exact path="/bebidas/:idRecipe" component={ DetalheBebida } />
+          <Route exact path="/bebidas/:idRecipe" component={ Details } />
           {/* ---------------------- ROTAS : EXPLORAR --------------------------- */}
           <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/explorar/:id/" component={ BebidaAleatoria } />

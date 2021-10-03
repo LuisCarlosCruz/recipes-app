@@ -40,6 +40,10 @@ function Provider({ children }) {
 
   const [linkCopied, setLinkCopied] = useState(false);
 
+  //= ==========DETAIS PAG============================
+  const [rec, setRec] = useState([]);
+  const [key, setKey] = useState('');
+
   const [favoritesRecipes, setFavoritesRecipes] = useState([]);
   const [filterFavoritesRecipes, setFilterFavoritesRecipes] = useState([]);
 
@@ -87,6 +91,10 @@ function Provider({ children }) {
     setFilterFavoritesRecipes,
     filter,
     setFilter,
+    rec,
+    setRec,
+    key,
+    setKey,
   };
 
   return (
