@@ -11,25 +11,6 @@ export default function RecipeFavoriteCard() {
     setFavoritesRecipes,
   } = useContext(Context);
 
-  // {
-  //   idMeal: 52771,
-  //   strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
-  //   strCategory: 'Vegetarian',
-  //   strMeal: 'Spicy Arrabiata Penne',
-  //   strTags: 'Pasta, Curry, Macarrão',
-  //   strArea: 'Italian',
-  //   type: 'Meal',
-  // },
-  // {
-  //   idDrink: 178319,
-  //   strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
-  //   strCategory: 'Ordinary Drink',
-  //   strAlcoholic: 'Alcoholic',
-  //   strDrink: 'Aquamarine',
-  //   strTags: '',
-  //   type: 'Drink',
-  // },
-
   useEffect(() => {
     // CONST CRIADA PARA FINS DE TESTE. DEVE SER SETADA NO BOTÃO DE "FAVORITAR RECEITA"
     const RECEITAS_FAV_MOCK = [
