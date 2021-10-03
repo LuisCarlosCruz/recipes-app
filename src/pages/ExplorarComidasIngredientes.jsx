@@ -6,6 +6,7 @@ import useCurrentPage from '../context/hooks/useCurrentPage';
 export default function ExplorarComidasIngredientes() {
   useCurrentPage('Explorar Comidas por Ingredientes');
   const [ingredients, setIngredients] = useState([]);
+  const [recipes, setRecipes] = useState([]);
   const history = useHistory();
   const twelve = 12;
 
@@ -21,7 +22,7 @@ export default function ExplorarComidasIngredientes() {
   const getMealsFromIngredients = async (ingredientName) => {
     const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredientName}`);
     const data = await response.json();
-    return data;
+    return setRecipes(data.meals);
   };
 
   return (
@@ -30,12 +31,16 @@ export default function ExplorarComidasIngredientes() {
         { ingredients.map((item, index) => (
           (index < twelve) && (
             <button
+              key={ index }
               type="button"
               name={ item.strIngredient }
               data-testid={ `${index}-ingredient-card` }
               onClick={ ({ target }) => {
                 getMealsFromIngredients(target.getAttribute('name'));
-                return history.push('/comidas');
+                return history.push({
+                  pathname: '/comidas',
+                  recipes,
+                });
               } }
             >
               <div className="card-image">

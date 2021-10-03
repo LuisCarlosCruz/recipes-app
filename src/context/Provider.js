@@ -16,6 +16,8 @@ function Provider({ children }) {
   const [apiRadio, setApiRadio] = useState();
   const [filter, setFilter] = useState(false);
 
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+
   const contextValue = {
     statusLoginBtn,
     setStatusLoginBtn,
@@ -39,6 +41,8 @@ function Provider({ children }) {
     setAllRecipes,
     filter,
     setFilter,
+    filteredRecipes,
+    setFilteredRecipes,
   };
 
   return (
