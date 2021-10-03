@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
-  // RECEITAS MOCKADAS PARA FINS DE TESTE EM "Receitas Feitas"
   const RECEITAS_MOCK = [
     {
       idMeal: 52771,
@@ -48,6 +47,8 @@ function Provider({ children }) {
   const [inputRadio, setInputRadio] = useState('');
   const [apiRadio, setApiRadio] = useState();
   const [filter, setFilter] = useState(false);
+  const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
 
   const contextValue = {
     statusLoginBtn,
@@ -70,6 +71,10 @@ function Provider({ children }) {
     setShowSearchBar,
     allRecipes,
     setAllRecipes,
+    categories,
+    setCategories,
+    selectedCategory,
+    setSelectedCategory,
     allRecipesDone,
     setAllRecipesDone,
     filterRecipeDone,

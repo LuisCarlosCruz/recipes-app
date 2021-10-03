@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding-bottom: 3.5rem;
 
   /* padding: 3.5rem 0; */
 
@@ -65,10 +66,73 @@
   height: 2rem;
 }
 
+/* ------------------------------------------------//
+//                      BUSCA                      //
+//------------------------------------------------ */
+
+.search-inputs {
+  align-items: center;
+  background-color: darkolivegreen;
+  display: flex;
+  flex-direction: column;
+  height: 7rem;
+  justify-content: center;
+}
+
+.search-input input {
+  border: none;
+  border-radius: 4px;
+}
+
+.search-radios {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.search-inputs button {
+  border: none;
+  border-radius: 4px;
+}
 
 /* ------------------------------------------------//
 //                 COMIDAS/BEBIDAS                 //
 //------------------------------------------------ */
+
+/* ------------------------------------------------//
+//                   CATEGORIAS                    //
+//------------------------------------------------ */
+
+.categories-filter {
+  align-items: center;
+  background-color: whitesmoke;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 1rem 0;
+  width: 100%;
+}
+
+.category-button {
+  background: whitesmoke;
+  color: darkolivegreen;
+  height: 100%;
+}
+
+.category-button input {
+  appearance: none;
+}
+
+.category-button label {
+  height: 100%;
+  margin: 0;
+  padding: 0.4rem;
+}
+
+.category-button input:checked + span {
+  color: darkolivegreen;
+  font-weight: 600;
+}
 
 /* ------------------------------------------------//
 //                      CARDS                      //
@@ -86,10 +150,10 @@
   box-shadow: 1px 1px 5px rgb(0 0 0 / 0.1);
   display: flex;
   flex-direction: column;
-  height: 15rem;
-  margin: 1rem;
+  height: 13rem;
+  margin: 0.5rem;
   overflow: hidden;
-  width: 12rem;
+  width: 10rem;
 }
 
 .recipe-card-img {
@@ -109,6 +173,7 @@
 }
 
 .recipe-card-title h4 {
+  font-size: 1.2rem;
   margin: 0;
 }
 
