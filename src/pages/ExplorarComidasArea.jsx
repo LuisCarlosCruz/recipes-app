@@ -13,10 +13,11 @@ export default function ExplorarComidasArea() {
 
   useEffect(() => {
     const fetchArea = async () => {
+      const all = 'All';
       const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
       const data = await response.json();
-      console.log(data.meals);
-      setAreas(data.meals);
+      const allAreas = [...data.meals, { strArea: all }];
+      setAreas(allAreas);
     };
     fetchArea();
   }, []);
@@ -99,14 +100,16 @@ export default function ExplorarComidasArea() {
         </select>
         { filterCards.map((filteredCard, index) => (
           <Link key={ index } to={ `/comidas/${filteredCard.idMeal}` }>
-            <img
-              data-testid={ `${index}-card-img` }
-              src={ filteredCard.strMealThumb }
-              alt="Food Thumb"
-            />
-            <span data-testid={ `${index}-card-name` }>
-              { filteredCard.strMeal }
-            </span>
+            <div data-testid={ `${index}-recipe-card` }>
+              <img
+                data-testid={ `${index}-card-img` }
+                src={ filteredCard.strMealThumb }
+                alt="Food Thumb"
+              />
+              <span data-testid={ `${index}-card-name` }>
+                { filteredCard.strMeal }
+              </span>
+            </div>
           </Link>
         )) }
       </div>
