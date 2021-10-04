@@ -1,41 +1,67 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
+import CategoryFilter from '../components/CategoryFilter';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HomeRecipeCard from '../components/HomeRecipeCard';
 import Context from '../context/Context';
 import useCurrentPage from '../context/hooks/useCurrentPage';
-import { fetchAllRecipes } from '../services';
+import { fetchAllRecipes, fetchByCategory, fetchCategories } from '../services';
 
 function Bebidas() {
   useCurrentPage('Bebidas');
 
+  const {
+    setAllRecipes,
+    setCategories,
+    selectedCategory,
+    apiRadio,
+    filter } = useContext(Context);
   const history = useHistory();
-
+  
   const {
     setAllRecipes,
     apiRadio,
     filter,
     filteredDrinkIngredients,
   } = useContext(Context);
-
+  
   useEffect(() => {
-    async function getRecipes() {
+    async function getCategories() {
+      const quantidade = 5;
+      const { drinks } = await fetchCategories('drinks');
+      setCategories(drinks.slice(0, quantidade));
+    }
+
+    async function getAllRecipes() {
       const quantidade = 12;
       const { drinks } = await fetchAllRecipes('drinks');
+      console.log('console abaixo em bebidas linhas 18,19');
+      console.log(drinks);
       setAllRecipes(drinks.slice(0, quantidade));
     }
 
-    getRecipes();
-  }, [setAllRecipes]);
+    async function getByCategory() {
+      const quantidade = 12;
+      const { drinks } = await fetchByCategory('drinks', selectedCategory);
+      setAllRecipes(drinks.slice(0, quantidade));
+    }
 
-  // NAO TENTE ENTENDER ESSE EFFECT !!
-  // PRO SEU PROPRIO BEM
+    getCategories();
+
+    if (selectedCategory === 'All') {
+      getAllRecipes();
+    } else {
+      getByCategory();
+    }
+  }, [selectedCategory]);
+
   useEffect(() => {
     const quantidade = 12;
     if (filter === true && apiRadio.drinks !== null) {
       setAllRecipes(apiRadio.drinks.slice(0, quantidade));
+
       if (window.location.pathname === '/bebidas' && apiRadio.drinks.length === 1) {
         const id = apiRadio.drinks[0].idDrink;
         history.push(`/bebidas/${id}`);
@@ -76,6 +102,9 @@ function Bebidas() {
   return (
     <div className="page">
       <Header showSearch />
+      <div className="categories-filter">
+        <CategoryFilter />
+      </div>
       <div className="home-cards">
         <HomeRecipeCard />
       </div>
