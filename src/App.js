@@ -20,6 +20,7 @@ import {
   Favoritas,
   NotFound,
   BebidaAleatoria,
+  ReceitaEmProgresso,
 } from './pages/index';
 
 function App() {
@@ -28,12 +29,22 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
-          {/* ---------------------- ROTAS : COMIDA --------------------------- */}
+          {/* ---------------------- ROTAS : COMIDAS --------------------------- */}
           <Route exact path="/comidas/" component={ Comidas } />
           <Route exact path="/comidas/:idRecipe" component={ Details } />
+          <Route
+            exact
+            path="/comidas/:id/in-progress"
+            component={ ReceitaEmProgresso }
+          />
           {/* ---------------------- ROTAS : BEBIDAS --------------------------- */}
           <Route exact path="/bebidas/" component={ Bebidas } />
           <Route exact path="/bebidas/:idRecipe" component={ Details } />
+          <Route
+            exact
+            path="/bebidas/:id/in-progress"
+            component={ ReceitaEmProgresso }
+          />
           {/* ---------------------- ROTAS : EXPLORAR --------------------------- */}
           <Route exact path="/explorar" component={ Explorar } />
           <Route exact path="/explorar/:id/" component={ BebidaAleatoria } />
