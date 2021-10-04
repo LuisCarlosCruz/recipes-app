@@ -17,6 +17,8 @@ function Provider({ children }) {
   const [filter, setFilter] = useState(false);
 
   const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [filteredDrinkIngredients, setFilteredDrinkIngredients] = useState([]);
+  const [filteredFoodIngredients, setFilteredFoodIngredients] = useState([]);
 
   const contextValue = {
     statusLoginBtn,
@@ -43,6 +45,10 @@ function Provider({ children }) {
     setFilter,
     filteredRecipes,
     setFilteredRecipes,
+    filteredDrinkIngredients,
+    setFilteredDrinkIngredients,
+    filteredFoodIngredients,
+    setFilteredFoodIngredients,
   };
 
   return (
