@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import fetchRecipeId from '../services/fetchRecipeId';
+import CopyToClipboardFunc from './CopyToClipboard';
 
 const COMIDAS = 'comidas';
 
@@ -8,6 +9,11 @@ export default function InProgress() {
   const [keyObject, setKeyObject] = useState('');
   // objeto da receita, com base no URL
   const [recipeURL, setRecipeURL] = useState([]);
+  // objeto passado como prop do componente CopyToClipboard
+  const [objCopy, setObjCopy] = useState({
+    id: 0,
+    type: '',
+  });
 
   const { pathname } = useLocation();
   const idRecipeByPathname = pathname.split('/')[2];
@@ -16,6 +22,9 @@ export default function InProgress() {
 
   useEffect(() => {
     setKeyObject(pathname.includes('/comidas') === true ? 'meals' : 'drinks');
+    setObjCopy(pathname.includes('/comidas') === true
+      ? { id: idRecipeByPathname, type: 'Meal' }
+      : { id: idRecipeByPathname, type: 'Drink' });
 
     const fetchId = async () => {
       await fetchRecipeId(idRecipeByPathname, setRecipeURL);
@@ -27,6 +36,7 @@ export default function InProgress() {
   const listIngredients = [];
   const listQuantity = [];
 
+  console.log(recipeURL[keyObject]);
   if (recipeURL[keyObject]) {
     const arrayObj = Object.entries(recipeURL[keyObject][0]);
     console.log(arrayObj);
@@ -89,6 +99,12 @@ export default function InProgress() {
                   }
                 </h5>
               </div>
+
+              <div className="recipe-share-btn">
+                <CopyToClipboardFunc recipe={ objCopy } index={ index } />
+              </div>
+              <div></div>
+
             </div>
           ))
       }
