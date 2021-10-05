@@ -5,6 +5,7 @@ import Context from './Context';
 function Provider({ children }) {
   const RECEITAS_MOCK = [
     {
+      id: 52771,
       idMeal: 52771,
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
       strCategory: 'Vegetarian',
@@ -15,6 +16,7 @@ function Provider({ children }) {
       type: 'Meal',
     },
     {
+      id: 178319,
       idDrink: 178319,
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       strCategory: 'Ordinary Drink',
