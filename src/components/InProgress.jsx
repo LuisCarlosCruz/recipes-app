@@ -103,7 +103,7 @@ export default function InProgress() {
                 </h5>
               </div>
 
-              <div className="recipe-share-btn">
+              <div className="recipe-share-btn" data-testid="share-btn">
                 <CopyToClipboardFunc recipe={ objCopy } index={ index } />
               </div>
 
@@ -124,7 +124,7 @@ export default function InProgress() {
                 <ul className="list-ingredients">
                   {
                     listIngredients.map((ingredient, i) => (
-                      <li key={ i }>
+                      <li data-testid={ `${i}-ingredient-step` } key={ i }>
                         { ingredient }
                         { ' - ' }
                         { listQuantity[i] }
@@ -134,7 +134,19 @@ export default function InProgress() {
                 </ul>
               </div>
 
-              <div></div>
+              <div className="recipe-instruction">
+                <h4>Instructions</h4>
+                <p data-testid="instructions">{ item.strInstructions }</p>
+              </div>
+
+              <div className="recipe-finish-button">
+                <button
+                  data-testid="finish-recipe-btn"
+                  type="button"
+                >
+                  Finalizar receita
+                </button>
+              </div>
 
             </div>
           ))
