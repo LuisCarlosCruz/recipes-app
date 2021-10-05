@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useHistory } from 'react-router';
+import { Link, useHistory } from 'react-router-dom';
 import Header from '../components/Header';
 import Context from '../context/Context';
 import Footer from '../components/Footer';
@@ -17,6 +17,7 @@ export default function Comidas() {
     selectedCategory,
     apiRadio,
     filter,
+    filteredFoodIngredients,
   } = useContext(Context);
 
   const history = useHistory();
@@ -67,6 +68,34 @@ export default function Comidas() {
       global.alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
   }, [apiRadio]);
+
+  if (filteredFoodIngredients.length > 0) {
+    return (
+      <div>
+        <Header showSearch />
+        { filteredFoodIngredients.map((meal, index) => (
+          <Link
+            key={ index }
+            to={ `/comidas/${meal.idMeal}` }
+          >
+            <div data-testid={ `${index}-recipe-card` }>
+              <img
+                src={ meal.strMealThumb }
+                alt={ meal.strMeal }
+                data-testid={ `${index}-card-img` }
+              />
+              <span data-testid={ `${index}-card-name` }>
+                {' '}
+                { meal.strMeal }
+                {' '}
+              </span>
+            </div>
+          </Link>
+        )) }
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div className="page">

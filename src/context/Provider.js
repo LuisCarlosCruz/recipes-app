@@ -54,6 +54,10 @@ function Provider({ children }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [filteredDrinkIngredients, setFilteredDrinkIngredients] = useState([]);
+  const [filteredFoodIngredients, setFilteredFoodIngredients] = useState([]);
+
   const contextValue = {
     statusLoginBtn,
     setStatusLoginBtn,
@@ -91,6 +95,12 @@ function Provider({ children }) {
     setFilterFavoritesRecipes,
     filter,
     setFilter,
+    filteredRecipes,
+    setFilteredRecipes,
+    filteredDrinkIngredients,
+    setFilteredDrinkIngredients,
+    filteredFoodIngredients,
+    setFilteredFoodIngredients,
     rec,
     setRec,
     key,

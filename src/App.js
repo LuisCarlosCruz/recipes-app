@@ -19,7 +19,6 @@ import {
   Feitas,
   Favoritas,
   NotFound,
-  BebidaAleatoria,
 } from './pages/index';
 
 function App() {
@@ -36,7 +35,7 @@ function App() {
           <Route exact path="/bebidas/:idRecipe" component={ Details } />
           {/* ---------------------- ROTAS : EXPLORAR --------------------------- */}
           <Route exact path="/explorar" component={ Explorar } />
-          <Route exact path="/explorar/:id/" component={ BebidaAleatoria } />
+          {/* <Route exact path="/explorar/:id/" component={ ExplorarBebidas } /> */}
           <Route exact path="/explorar/comidas" component={ ExplorarComidas } />
           <Route exact path="/explorar/comidas/area" component={ ExplorarComidasArea } />
           <Route exact path="/explorar/bebidas" component={ ExplorarBebidas } />
