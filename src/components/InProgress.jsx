@@ -5,6 +5,7 @@ import fetchRecipeId from '../services/fetchRecipeId';
 import CopyToClipboardFunc from './CopyToClipboard';
 
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
+import getIngredients from '../utils/getIngredientes';
 
 const COMIDAS = 'comidas';
 
@@ -17,10 +18,11 @@ export default function InProgress() {
     id: 0,
     type: '',
   });
+  const [listIngredients, setListIngredients] = useState([]);
+  const [listQuantity, setListQuantity] = useState([]);
 
   const { pathname } = useLocation();
   const idRecipeByPathname = pathname.split('/')[2];
-  console.log(idRecipeByPathname);
   const pageNameByPathname = pathname.split('/')[1];
 
   useEffect(() => {
@@ -33,10 +35,15 @@ export default function InProgress() {
       await fetchRecipeId(idRecipeByPathname, setRecipeURL);
     };
     fetchId();
+    // getIngredients(recipeURL, keyObject, setListIngredients, setListQuantity);
   }, []);
 
+  useEffect(() => {
+    getIngredients(recipeURL, keyObject, setListIngredients, setListQuantity);
+  }, [keyObject, recipeURL]);
+
   // ============ OBTÉM INGREDIENTES & QUANTIDADES ================ //
-  const listIngredients = [];
+  /*   const listIngredients = [];
   const listQuantity = [];
 
   console.log(recipeURL[keyObject]);
@@ -45,8 +52,7 @@ export default function InProgress() {
 
     const getIngredients = () => {
       // INGREDIENTES
-      const ingredients = arrayObj
-        .filter((item) => item[0].includes('strIngredient'));
+      const ingredients = arrayObj.filter((item) => item[0].includes('strIngredient'));
       ingredients.forEach((item) => {
         if (item[1] !== '' && item[1] !== null) {
           listIngredients.push(item[1]);
@@ -54,8 +60,7 @@ export default function InProgress() {
       });
 
       // QUANTIDADES
-      const quantity = arrayObj
-        .filter((item) => item[0].includes('strMeasure'));
+      const quantity = arrayObj.filter((item) => item[0].includes('strMeasure'));
       quantity.forEach((item) => {
         if (item[1] !== '' && item[1] !== null) {
           listQuantity.push(item[1]);
@@ -66,7 +71,7 @@ export default function InProgress() {
       console.log(listQuantity);
     };
     getIngredients();
-  }
+  } */
   // =========================== // ============================== //
 
   return (
