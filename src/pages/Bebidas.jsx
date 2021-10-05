@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import CategoryFilter from '../components/CategoryFilter';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
@@ -16,7 +17,10 @@ function Bebidas() {
     setCategories,
     selectedCategory,
     apiRadio,
-    filter } = useContext(Context);
+    filter,
+    filteredDrinkIngredients,
+  } = useContext(Context);
+
   const history = useHistory();
 
   useEffect(() => {
@@ -64,18 +68,42 @@ function Bebidas() {
     }
   }, [apiRadio]);
 
+  if (filteredDrinkIngredients.length > 0) {
+    return (
+      <div>
+        <Header showSearch />
+        { filteredDrinkIngredients.map((drink, index) => (
+          <Link
+            key={ index }
+            to={ `/bebidas/${drink.idDrink}` }
+          >
+            <div data-testid={ `${index}-recipe-card` }>
+              <img
+                src={ drink.strDrinkThumb }
+                alt={ drink.strDrink }
+                data-testid={ `${index}-card-img` }
+              />
+              <span data-testid={ `${index}-card-name` }>
+                {' '}
+                { drink.strDrink }
+                {' '}
+              </span>
+            </div>
+          </Link>
+        )) }
+        <Footer />
+      </div>
+    );
+  }
   return (
     <div className="page">
       <Header showSearch />
-
       <div className="categories-filter">
         <CategoryFilter />
       </div>
-
       <div className="home-cards">
         <HomeRecipeCard />
       </div>
-
       <Footer />
     </div>
   );
