@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
+
 import fetchRecipeId from '../services/fetchRecipeId';
 import CopyToClipboardFunc from './CopyToClipboard';
+
+import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
 const COMIDAS = 'comidas';
 
@@ -39,7 +42,6 @@ export default function InProgress() {
   console.log(recipeURL[keyObject]);
   if (recipeURL[keyObject]) {
     const arrayObj = Object.entries(recipeURL[keyObject][0]);
-    console.log(arrayObj);
 
     const getIngredients = () => {
       // INGREDIENTES
@@ -60,6 +62,7 @@ export default function InProgress() {
         }
       });
 
+      console.log(listIngredients);
       console.log(listQuantity);
     };
     getIngredients();
@@ -103,6 +106,34 @@ export default function InProgress() {
               <div className="recipe-share-btn">
                 <CopyToClipboardFunc recipe={ objCopy } index={ index } />
               </div>
+
+              <div className="recipe-favorite-btn">
+                <button
+                  data-testid="favorite-btn"
+                  type="button"
+                >
+                  <img
+                    src={ whiteHeartIcon }
+                    alt="favoritas"
+                  />
+                </button>
+              </div>
+
+              <div className="recipe-ingredients">
+                <h4>Ingredients</h4>
+                <ul className="list-ingredients">
+                  {
+                    listIngredients.map((ingredient, i) => (
+                      <li key={ i }>
+                        { ingredient }
+                        { ' - ' }
+                        { listQuantity[i] }
+                      </li>
+                    ))
+                  }
+                </ul>
+              </div>
+
               <div></div>
 
             </div>
