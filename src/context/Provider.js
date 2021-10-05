@@ -5,6 +5,7 @@ import Context from './Context';
 function Provider({ children }) {
   const RECEITAS_MOCK = [
     {
+      id: 52771,
       idMeal: 52771,
       strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
       strCategory: 'Vegetarian',
@@ -15,6 +16,7 @@ function Provider({ children }) {
       type: 'Meal',
     },
     {
+      id: 178319,
       idDrink: 178319,
       strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
       strCategory: 'Ordinary Drink',
@@ -54,6 +56,10 @@ function Provider({ children }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('All');
 
+  const [filteredRecipes, setFilteredRecipes] = useState([]);
+  const [filteredDrinkIngredients, setFilteredDrinkIngredients] = useState([]);
+  const [filteredFoodIngredients, setFilteredFoodIngredients] = useState([]);
+
   const contextValue = {
     statusLoginBtn,
     setStatusLoginBtn,
@@ -91,6 +97,12 @@ function Provider({ children }) {
     setFilterFavoritesRecipes,
     filter,
     setFilter,
+    filteredRecipes,
+    setFilteredRecipes,
+    filteredDrinkIngredients,
+    setFilteredDrinkIngredients,
+    filteredFoodIngredients,
+    setFilteredFoodIngredients,
     rec,
     setRec,
     key,
