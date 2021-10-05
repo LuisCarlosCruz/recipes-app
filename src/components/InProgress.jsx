@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import fetchRecipeId from '../services/fetchRecipeId';
 
-// const COMIDAS = 'comidas';
+const COMIDAS = 'comidas';
 
 export default function InProgress() {
   const [keyObject, setKeyObject] = useState('');
@@ -55,7 +55,43 @@ export default function InProgress() {
     getIngredients();
   }
   // =========================== // ============================== //
+
   return (
-    <div>InProgress component!</div>
+    <div className="inProgress-componet">
+      {
+        recipeURL[keyObject]
+          && recipeURL[keyObject].map((item, index) => (
+            <div className="elements" key={ index }>
+
+              <div className="recipe-image">
+                <img
+                  data-testid="recipe-photo"
+                  src={ pageNameByPathname === COMIDAS
+                    ? item.strMealThumb : item.strDrinkThumb }
+                  alt="foto da receita"
+                />
+              </div>
+
+              <div className="recipe-title">
+                <h2
+                  data-testid="recipe-title"
+                >
+                  { pageNameByPathname === COMIDAS ? item.strMeal : item.strDrink }
+                </h2>
+              </div>
+
+              <div className="recipe-category">
+                <h5 data-testid="recipe-category">
+                  {
+                    pageNameByPathname === COMIDAS
+                      ? item.strCategory
+                      : `${item.strCategory} - ${item.strAlcoholic}`
+                  }
+                </h5>
+              </div>
+            </div>
+          ))
+      }
+    </div>
   );
 }
