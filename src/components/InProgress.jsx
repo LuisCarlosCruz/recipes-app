@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 
 import fetchRecipeId from '../services/fetchRecipeId';
@@ -6,10 +6,15 @@ import CopyToClipboardFunc from './CopyToClipboard';
 
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import getIngredients from '../utils/getIngredientes';
+import Context from '../context/Context';
 
 const COMIDAS = 'comidas';
+const KEY_DONE_RECIPES = 'doneRecipes';
 
 export default function InProgress() {
+  const { recipeDone, setRecipeDone } = useContext(Context);
+
+  // chave que define o tipo da receita: 'meals' ou 'drinks'
   const [keyObject, setKeyObject] = useState('');
   // objeto da receita, com base no URL
   const [recipeURL, setRecipeURL] = useState([]);
@@ -119,6 +124,22 @@ export default function InProgress() {
                 <button
                   data-testid="finish-recipe-btn"
                   type="button"
+                  onClick={ () => {
+                    const recipeFinish = {
+                      id: idRecipeByPathname,
+                      idMeal: idRecipeByPathname,
+                      trMealThumb: item.strMealThumb,
+                      strCategory: item.strCategory,
+                      trMeal: item.strMeal,
+                      trTags: item.strTags,
+                      trArea: item.strArea,
+                      ate: '23/06/2020',
+                      type: objCopy.type,
+                    };
+                    setRecipeDone([...recipeDone, recipeFinish]);
+                    localStorage.setItem(KEY_DONE_RECIPES, JSON.stringify(recipeDone));
+                    console.log(recipeDone);
+                  } }
                 >
                   Finalizar receita
                 </button>
@@ -130,3 +151,28 @@ export default function InProgress() {
     </div>
   );
 }
+
+// const RECEITAS_MOCK = [
+//   {
+//     id: 52771,
+//     idMeal: 52771,
+//     strMealThumb: 'https://www.themealdb.com/images/media/meals/ustsqw1468250014.jpg',
+//     strCategory: 'Vegetarian',
+//     strMeal: 'Spicy Arrabiata Penne',
+//     strTags: 'Pasta, Curry, Macarrão',
+//     strArea: 'Italian',
+//     date: '23/06/2020',
+//     type: 'Meal',
+//   },
+//   {
+//     id: 178319,
+//     idDrink: 178319,
+//     strDrinkThumb: 'https://www.thecocktaildb.com/images/media/drink/zvsre31572902738.jpg',
+//     strCategory: 'Ordinary Drink',
+//     strAlcoholic: 'Alcoholic',
+//     strDrink: 'Aquamarine',
+//     strTags: '',
+//     date: '23/06/2020',
+//     type: 'Drink',
+//   },
+// ]
