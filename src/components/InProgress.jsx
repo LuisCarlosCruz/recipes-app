@@ -12,7 +12,7 @@ const COMIDAS = 'comidas';
 const KEY_DONE_RECIPES = 'doneRecipes';
 
 export default function InProgress() {
-  const { recipeDone, setRecipeDone } = useContext(Context);
+  const { recipeDone, setRecipeDone, linkCopied } = useContext(Context);
 
   // chave que define o tipo da receita: 'meals' ou 'drinks'
   const [keyObject, setKeyObject] = useState('');
@@ -88,6 +88,14 @@ export default function InProgress() {
               </div>
 
               <div className="recipe-share-btn" data-testid="share-btn">
+                {
+                  linkCopied
+                    ? (
+                      <div className="alert alert-success" role="alert">
+                        Link copiado!
+                      </div>
+                    ) : null
+                }
                 <CopyToClipboardFunc recipe={ objCopy } index={ index } />
               </div>
 
