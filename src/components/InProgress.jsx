@@ -38,41 +38,10 @@ export default function InProgress() {
     // getIngredients(recipeURL, keyObject, setListIngredients, setListQuantity);
   }, []);
 
+  // === OBTÉM INGREDIENTES & QUANTIDADES E SETA NOS RESPECTIVOS ESTADOS === //
   useEffect(() => {
     getIngredients(recipeURL, keyObject, setListIngredients, setListQuantity);
   }, [keyObject, recipeURL]);
-
-  // ============ OBTÉM INGREDIENTES & QUANTIDADES ================ //
-  /*   const listIngredients = [];
-  const listQuantity = [];
-
-  console.log(recipeURL[keyObject]);
-  if (recipeURL[keyObject]) {
-    const arrayObj = Object.entries(recipeURL[keyObject][0]);
-
-    const getIngredients = () => {
-      // INGREDIENTES
-      const ingredients = arrayObj.filter((item) => item[0].includes('strIngredient'));
-      ingredients.forEach((item) => {
-        if (item[1] !== '' && item[1] !== null) {
-          listIngredients.push(item[1]);
-        }
-      });
-
-      // QUANTIDADES
-      const quantity = arrayObj.filter((item) => item[0].includes('strMeasure'));
-      quantity.forEach((item) => {
-        if (item[1] !== '' && item[1] !== null) {
-          listQuantity.push(item[1]);
-        }
-      });
-
-      console.log(listIngredients);
-      console.log(listQuantity);
-    };
-    getIngredients();
-  } */
-  // =========================== // ============================== //
 
   return (
     <div className="inProgress-componet">
@@ -84,17 +53,22 @@ export default function InProgress() {
               <div className="recipe-image">
                 <img
                   data-testid="recipe-photo"
-                  src={ pageNameByPathname === COMIDAS
-                    ? item.strMealThumb : item.strDrinkThumb }
+                  src={
+                    pageNameByPathname === COMIDAS
+                      ? item.strMealThumb
+                      : item.strDrinkThumb
+                  }
                   alt="foto da receita"
                 />
               </div>
 
               <div className="recipe-title">
-                <h2
-                  data-testid="recipe-title"
-                >
-                  { pageNameByPathname === COMIDAS ? item.strMeal : item.strDrink }
+                <h2 data-testid="recipe-title">
+                  {
+                    pageNameByPathname === COMIDAS
+                      ? item.strMeal
+                      : item.strDrink
+                  }
                 </h2>
               </div>
 
@@ -117,10 +91,7 @@ export default function InProgress() {
                   data-testid="favorite-btn"
                   type="button"
                 >
-                  <img
-                    src={ whiteHeartIcon }
-                    alt="favoritas"
-                  />
+                  <img src={ whiteHeartIcon } alt="favoritas" />
                 </button>
               </div>
 
