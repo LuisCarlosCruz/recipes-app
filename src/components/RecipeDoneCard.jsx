@@ -1,19 +1,21 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import Context from '../context/Context';
 import RecipeDoneCardFilter from './RecipeDoneCardFilter';
 import RecipeDoneCardAll from './RecipeDoneCardAll';
 
 export default function RecipeDoneCard() {
-  const { allRecipesDone, setAllRecipesDone, filterRecipeDone } = useContext(Context);
+  const {
+    allRecipesDone,
+    // setAllRecipesDone,
+    filterRecipeDone,
+  } = useContext(Context);
 
-  useEffect(() => {
-    // recuperar do local storage
-    const recipeDone = JSON.parse(localStorage.getItem('doneRecipes'));
-    // setar no estado
-    setAllRecipesDone(recipeDone);
-    console.log('log no useEffect em RecipeDoneCard');
-    console.log(recipeDone);
-  }, [setAllRecipesDone]);
+  // useEffect(() => {
+  //   // recuperar do local storage
+  //   const recipeDone = JSON.parse(localStorage.getItem('doneRecipes'));
+  //   // setar no estado
+  //   setAllRecipesDone(recipeDone);
+  // }, [setAllRecipesDone]);
 
   // RETORNA COMPONENTE COM AS RECEITAS FILTRADAS
   if (filterRecipeDone.length !== 0) return (<RecipeDoneCardFilter />);

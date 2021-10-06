@@ -147,7 +147,8 @@ export default function InProgress() {
                     //   type: objCopy.type,
                     // };
                     // setRecipeInProgress([...recipeInProgress, recipeFinish]);
-                    localStorage.setItem(KEY_DONE_RECIPES, JSON.stringify(recipeInProgress));
+                    localStorage.setItem(KEY_DONE_RECIPES,
+                      JSON.stringify(recipeInProgress));
                     console.log(recipeInProgress);
                   } }
                 >
