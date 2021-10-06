@@ -1,10 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Context from '../context/Context';
 import RecipeDoneCardFilter from './RecipeDoneCardFilter';
 import RecipeDoneCardAll from './RecipeDoneCardAll';
 
 export default function RecipeDoneCard() {
-  const { allRecipesDone, filterRecipeDone } = useContext(Context);
+  const { allRecipesDone, setAllRecipesDone, filterRecipeDone } = useContext(Context);
+
+  useEffect(() => {
+    // recuperar do local storage
+    const recipeDone = JSON.parse(localStorage.getItem('doneRecipes'));
+    // setar no estado
+    setAllRecipesDone(recipeDone);
+    console.log('log no useEffect em RecipeDoneCard');
+    console.log(recipeDone);
+  }, [setAllRecipesDone]);
 
   // RETORNA COMPONENTE COM AS RECEITAS FILTRADAS
   if (filterRecipeDone.length !== 0) return (<RecipeDoneCardFilter />);
@@ -12,5 +21,5 @@ export default function RecipeDoneCard() {
   // RETORNA COMPONENTE COM TODAS AS RECEITAS FEITAS
   if (allRecipesDone.length !== 0) return (<RecipeDoneCardAll />);
 
-  return null;
+  return <p>Você não finalizou nenhuma receita</p>;
 } // end function
