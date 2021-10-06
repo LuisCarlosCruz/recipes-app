@@ -12,7 +12,7 @@ const COMIDAS = 'comidas';
 const KEY_DONE_RECIPES = 'doneRecipes';
 
 export default function InProgress() {
-  const { recipeDone, setRecipeDone, linkCopied } = useContext(Context);
+  const { recipeInProgress, setRecipeInProgress, linkCopied } = useContext(Context);
 
   // chave que define o tipo da receita: 'meals' ou 'drinks'
   const [keyObject, setKeyObject] = useState('');
@@ -46,6 +46,8 @@ export default function InProgress() {
   // === OBTÉM INGREDIENTES & QUANTIDADES E SETA NOS RESPECTIVOS ESTADOS === //
   useEffect(() => {
     getIngredients(recipeURL, keyObject, setListIngredients, setListQuantity);
+    // SETA A RECEITA QUE ESTÁ EM ANDAMENTO NO ESTADO ṔARA SER USADO NO BOTÃO DE FINALIZAR RECEITA
+    setRecipeInProgress(recipeURL[keyObject]);
   }, [keyObject, recipeURL]);
 
   return (
@@ -133,20 +135,20 @@ export default function InProgress() {
                   data-testid="finish-recipe-btn"
                   type="button"
                   onClick={ () => {
-                    const recipeFinish = {
-                      id: idRecipeByPathname,
-                      idMeal: idRecipeByPathname,
-                      trMealThumb: item.strMealThumb,
-                      strCategory: item.strCategory,
-                      trMeal: item.strMeal,
-                      trTags: item.strTags,
-                      trArea: item.strArea,
-                      ate: '23/06/2020',
-                      type: objCopy.type,
-                    };
-                    setRecipeDone([...recipeDone, recipeFinish]);
-                    localStorage.setItem(KEY_DONE_RECIPES, JSON.stringify(recipeDone));
-                    console.log(recipeDone);
+                    // const recipeFinish = {
+                    //   id: idRecipeByPathname,
+                    //   idMeal: idRecipeByPathname,
+                    //   strMealThumb: item.strMealThumb,
+                    //   strCategory: item.strCategory,
+                    //   strMeal: item.strMeal,
+                    //   strTags: item.strTags,
+                    //   strArea: item.strArea,
+                    //   date: '23/06/2020',
+                    //   type: objCopy.type,
+                    // };
+                    // setRecipeInProgress([...recipeInProgress, recipeFinish]);
+                    localStorage.setItem(KEY_DONE_RECIPES, JSON.stringify(recipeInProgress));
+                    console.log(recipeInProgress);
                   } }
                 >
                   Finalizar receita

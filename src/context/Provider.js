@@ -37,8 +37,10 @@ function Provider({ children }) {
   const [allRecipes, setAllRecipes] = useState([]);
 
   // ESSE ESTADO TEM QUE SER SETADO NO BOTÃO 'FINALIZAR RECEITA' DA  PÁG. 'RECEITA EM PROGRESSO'
-  const [allRecipesDone, setAllRecipesDone] = useState(RECEITAS_MOCK);
-  const [recipeDone, setRecipeDone] = useState([]);
+  // const [allRecipesDone, setAllRecipesDone] = useState(RECEITAS_MOCK);
+  const [allRecipesDone, setAllRecipesDone] = useState([]);
+
+  const [recipeInProgress, setRecipeInProgress] = useState([]);
 
   const [filterRecipeDone, setFilterRecipeDone] = useState([]);
 
@@ -89,8 +91,8 @@ function Provider({ children }) {
     setSelectedCategory,
     allRecipesDone,
     setAllRecipesDone,
-    recipeDone,
-    setRecipeDone,
+    recipeInProgress, //
+    setRecipeInProgress, //
     filterRecipeDone,
     setFilterRecipeDone,
     linkCopied,
