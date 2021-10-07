@@ -13,3 +13,4 @@ export { default as Perfil } from './Perfil';
 export { default as NotFound } from './NotFound';
 export { default as DetalheBebida } from './DetalheBebida';
 export { default as DetalheComida } from './DetalheComida';
+export { default as ReceitaEmProgresso } from './ReceitaEmProgresso';
