@@ -1,1 +1,1 @@
-> ### Projeto App de Receitas
+> ## Projeto App de Receitas
